@@ -73,9 +73,9 @@ public class lektionSqliteCRUD {
         }
     }
 
-    private static void update(String forfattare, String titel, int pris, int id) {
-        String sql = "UPDATE bok SET bokForfattare = ? , "
-                + "bokTitel = ? , "
+    private static void update(String titel, String forfattare, int pris, int id) {
+        String sql = "UPDATE bok SET bokTitel = ? , "
+                + "bokForfattare = ? , "
                 + "bokPris = ? "
                 + "WHERE bokId = ?";
 
@@ -83,8 +83,8 @@ public class lektionSqliteCRUD {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the corresponding param
-            pstmt.setString(1, titel);
-            pstmt.setString(2, forfattare);
+            pstmt.setString(1, forfattare);
+            pstmt.setString(2, titel);
             pstmt.setInt(3, pris);
             pstmt.setInt(4, id);
             // update
@@ -131,11 +131,35 @@ public class lektionSqliteCRUD {
                     break;
 
                 case 2:
-                    insert("Sagan om ringen", "Tolkien, J.R.R", 120);
+                    String titel;
+                    String forfattare;
+                    int pris;
+                    Scanner sc1 = new Scanner(System.in);
+                    System.out.println("Ange boktitel");
+                    titel= sc1.nextLine();
+                    System.out.println("Ange författarnamn");
+                    forfattare=sc1.nextLine();
+                    System.out.println("Ange bokpris");
+                    pris=sc1.nextInt();
+                    insert(titel,forfattare,pris);
                     break;
 
                 case 3:
-                    update("Bilbo", "Tolkien, J.R.R", 100, 1);
+                    String btitel;
+                    String forf;
+                    int ppris;
+                    int bid;
+                    Scanner sc2 = new Scanner(System.in);
+                    System.out.println("Ange ny boktitel");
+                    btitel= sc2.nextLine();
+                    System.out.println("Ange nytt författarnamn");
+                    forf=sc2.nextLine();
+                    System.out.println("Ange nytt bokpris");
+                    ppris=sc2.nextInt();
+                    System.out.println("Ange vilket bokId");
+                    bid=sc2.nextInt();
+
+                    update(btitel, forf, ppris, bid);
                     break;
 
                 case 4:
