@@ -83,8 +83,9 @@ public class lektionSqliteCRUD {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the corresponding param
-            pstmt.setString(1, forfattare);
-            pstmt.setString(2, titel);
+            pstmt.setString(1, titel);
+            pstmt.setString(2, forfattare);
+
             pstmt.setInt(3, pris);
             pstmt.setInt(4, id);
             // update
