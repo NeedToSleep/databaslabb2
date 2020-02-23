@@ -84,7 +84,8 @@ public class lektionSqliteCRUD {
 
             // set the corresponding param
             pstmt.setString(1, titel);
-            pstmt.setString(2, forfattare);
+            pstmt.setString(21
+                    , forfattare);
 
             pstmt.setInt(3, pris);
             pstmt.setInt(4, id);
